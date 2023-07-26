@@ -53,17 +53,11 @@ class ImagePointsDraw:
     def drawImage(self, data, **imargs):
         fig, ax = plt.subplots()
         fig.canvas.mpl_connect('button_press_event', self.onClickPoint)
-        #im = ax.imshow(data, alpha = .8, **imargs)
-        dedges = np.arange(0, 30, 0.5)
-        cedges = np.arange(-0.5, 100.5, 1)
-        hist, dedges, cedges, im = ax.hist2d(data[0,:], data[1,:], bins = (dedges, cedges))
-        ax.cla()
-        dmesh = dedges[0:59] + 0.25 
-        cmesh = cedges[0:100] + 0.5
-        contours = ax.contour(dmesh, cmesh, hist.T, levels = 100, colors = 'black', **imargs)
-        ax.set_title("Press left mouse to select area\n Press right mouse to remove last selected point\n Select points CCW")
+        im = ax.imshow(data, alpha = .8, **imargs)
+        ax.set_title("Press left mouse to select points\n Press right mouse to remove last selected point")
+        fig.colorbar(im, ax=ax)
         self.scat = ax.scatter(self.x_points, self.y_points)
-        self.line, = ax.plot([0], [0])
+        self.line, = ax.plot([0], [0])        
 
     def drawContours(self, data, edges0, edges1, **imargs):
         fig, ax = plt.subplots()
