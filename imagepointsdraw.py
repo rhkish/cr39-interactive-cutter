@@ -59,12 +59,12 @@ class ImagePointsDraw:
         self.scat = ax.scatter(self.x_points, self.y_points)
         self.line, = ax.plot([0], [0])        
 
-    def drawContours(self, data, edges0, edges1, **imargs):
+    def drawContours(self, data0, data1, edges0, edges1, **imargs):
         fig, ax = plt.subplots()
         fig.canvas.mpl_connect('button_press_event', self.onClickPoint)
         #im = ax.imshow(data, alpha = .8, **imargs)
-        hist, dedges, cedges, im = ax.hist2d(data[0,:], data[1,:], bins = (edges0, edges1))
-        ax.cla()
+        hist, dedges, cedges = np.histogram2d(data0, data1, bins = (edges0, edges1))
+        
         mesh0 = edges0[0:-1] + 0.25 
         mesh1 = edges1[0:-1] + 0.5
         contours = ax.contour(mesh0, mesh1, hist.T, levels = 20, colors = 'black', **imargs)
