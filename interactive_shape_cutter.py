@@ -5,16 +5,11 @@ from cr39py.scan import Scan
 from cr39py.cut import Cut
 import numpy as np
 import matplotlib.pyplot as plt
-import pickle
-import glob
-import sys
-#import reconstruction 
+import sys 
 from imagepointsdraw import ImagePointsDraw
 from shapely.geometry import Point
 from shapely.geometry.polygon import Polygon
 import numpy.ma as ma
-import matplotlib
-import os
 
 
 
