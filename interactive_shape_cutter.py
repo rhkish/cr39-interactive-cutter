@@ -59,14 +59,14 @@ xy_array = scan.trackdata[:, 0:2]
 masked_xy_array = ma.MaskedArray(xy_array, mask = ~bool_mask)
 kept_xy_array = masked_xy_array[~masked_xy_array.mask] #1D list of all non-masked values
 kept_xy_array = np.reshape(kept_xy_array, (-1, 2))
-print(kept_xy_array)
-print(kept_xy_array.shape)
-plt.hist2d(kept_xy_array[:,0],kept_xy_array[:,1], bins = (100,100), range = [[-5, 5],[-5,5]]) 
+
+counts, xedges, yedges, im = plt.hist2d(kept_xy_array[:,0],kept_xy_array[:,1], bins = (100,100), range = [[-5, 5],[-5,5]]) 
 plt.title("xy histogram")
 plt.xlabel("x (um)")
 plt.ylabel("y (um)")
 plt.colorbar()
 plt.show()
 
+np.savetxt("xy_hist.csv", counts, delimiter = ",")
 
 
