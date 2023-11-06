@@ -15,7 +15,7 @@ from cr39py.response import track_energy
 
 
 #Load Data from cpsa for plotting
-cpsa_path = Path("C:\\", "Users", "Reece", "Desktop", "PRAD UROP stuff", "A2023081602_A6_track_5h_40x_s6.cpsa")
+cpsa_path = Path("C:\\", "Users", "Reece", "Desktop", "PRAD UROP stuff", "A2023081601_A5_track_5h_40x_s6_B.cpsa")
 XY_mode = True #If user wants to select in XY space as well and get an energy spectrum histogram out
 
 
